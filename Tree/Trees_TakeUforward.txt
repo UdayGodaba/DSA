@@ -1,0 +1,37 @@
+L-1:
+
+-> Tree is a non linear hierarchical data structure
+-> Binary Trees : Trees with atmost two children
+-> Parent Node i.e starting node is called Root Node
+-> Nodes which are below a node are children to that node
+-> Leaf Node is the node with no children
+-> Node along with its children other than root node is called subtree
+
+Types of Binary Trees:
+
+-> Full Binary Tree : Every node in BT with 2 or 0 children
+-> Complete BT : All levels are completely filled except last level and the last level has all nodes on left as possible
+-> Perfect BT : All leaf nodes are at same level for a BT
+-> Balanced BT : Heigth of the tree must be max log(N)
+-> Degenerate BT(Skewed Tree) : Every node in BT with only 1 child
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+L-15: Height Balanced Binary Tree
+
+-> A tree is said to be height balanced if height(left subtree) - height(right subtree) <= 1 try doing from bottom of tree
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-39: Binary Search Tree
+
+-> left node must be less than parent node and right node must be greater than parent node i.e L < N < R
+-> left subtree must be BST and right subtree must be BST
+
+Can there be duplicates?
+-> Ideally No but if mentioned it is like L <= N < R
+
+Why BST?
+-> Searching and Traversing time completely reduces from O(N) to O(logN)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+

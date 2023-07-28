@@ -1,0 +1,122 @@
+L-1
+
+Graphs are classified into 2 types : Directed Graphs and Undirected Graphs(Bi-Directional)
+
+Path : Inorder to say it as path it contains lot of nodes and edges and each of them must be reachable
+            .adjacent nodes must have connection i.e edge
+            .nodes should not be repeated
+
+Degree in Graphs:
+    For Undirected Graphs:
+        -> No of edges attached to it.
+        -> Total Degree of Graph = 2 x No of edges(E)
+    For Directed Graphs:
+        -> Indegree : No of incoming edges
+        -> Outdegree : No of outgoing edges
+
+Weighted Edge: If weight is not mentioned then we take as 1
+
+No. of Undirected Graphs can be formed from n-edges is 2**(n*(n-1)//2) 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-17 Bipartite Graph
+
+-> If it is possible to color adjacent vertices of a graph with 2 colors such that none of the adjacent has same color then it is called Bipartite Graph
+
+Which Graphs can be Bipartite?
+    -> Linear Graphs(No cycle)
+    -> Cyclic Graphs with even length within cycle
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-21 Topological sort(DFS)
+
+-> Topological sort can be applied on Directed Acyclic Graph(DAG)
+-> Topological sort : Linear ordering of vertices such that if there is a edge from u to v, u appears before v in that ordering
+Ex:
+    graph1 = {
+        0 : [],
+        1 : [],
+        2 : [3],
+        3 : [1],
+        4 : [0,1],
+        5 : [0,2]
+    }
+
+    ->for that graph Topological sort can be : 5 4 2 3 1 0    or       4 5 2 3 1 0
+
+Why only DAG?
+-> In case of UnDirected graph there is no way we can say which one is ahead of other since both point eachother
+-> In case of Cyclic Graph also we can say which comes first
+
+L-22 Khan's Algorithm(Topological sort using BFS)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-27 Shortest Path in Directed Acyclic Graph - Topological sort
+
+S-1 : Do a Topological Sort on Graph
+S-2 : Take the nodes out of stack and relax the edges
+
+L-32 Dijkstra's Algorithm
+
+-> Applicable to Undirected Graph/ Directed Graph but fails if it has negative path weight
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-41 Bellman Ford Algorithm
+
+-> Applicable for Directed Graph only and it overcomes the cons of Dijkstra's Algorithm like Graph with negative path weight
+-> Edges can be in any order
+
+S-1 : Relax all edges N-1 times sequentailly
+        Relax :
+                if (dist[u] + wt < dist[v]):
+                    dist[v] = dist[u] + wt
+
+Why N - 1 Iterations?
+-> SInce in a graph of N nodes, in worst case you will take N-1 edges to reach from first to last thereby we iterate N-1 Iterations
+
+What if there is negative cycle?
+-> Since we don't go beyond N-1 cycles it won't be a problem
+-> If we want to detect cycle using this Algorithm then if for Nth Iteration if dist array values reduces then there is cycle
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-42 Floyd Warshall Algorithm
+
+-> It can find Shortest Path for multiple sources, so it is called MultiSource Shortest Path Algorithm
+-> For both DG and UG
+-> Can detect negative cycles
+-> Uses Adj Matrix
+-> If there exists a negative cycle then matrix[i][i] < 0 or else it never change from 0
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-44 Minimum Spanning Tree
+
+-> Spanning Tree: A tree containing N nodes and N-1 edges and all nodes are reachable from one another then it is called Spanning Tree
+-> The Spanning Tree with Minimum sum of edge weight is called Minimum Spanning Tree
+-> Prims and Kruskals Algorithm are used
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-45 Prims Algorithm
+
+-> Used in Find Minimum Spanning Tree
+-> Used Prioroty Queue
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-46 Disjoint Sets (Most Imp)
+
+-> Used to find whether U and V are connected in constant time
+-> Used for Dynamic Graphs
+-> Union does form a connection between U and V it can be done using -Union by Rank and -Union by Size
+
+Union by Rank:
+
+S-1 : Find ultimate Parent of U and V i.e pu and pv
+S-2 : Find rank of pu and pv
+S-3 : Connect smaller rank to larger rank always

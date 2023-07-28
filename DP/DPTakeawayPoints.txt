@@ -1,0 +1,34 @@
+L-1
+
+Tabulation -----> Bottom - Up
+Memoization ----> Top - Bottom
+
+Overlapping SubProblems ----> If we come across SubProblems which are already solved
+Memoization -----> Tend to store the value of SubProblems in some Map/table
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+L-2
+
+To identify Dp problems question should contain something like:
+. Find max or min
+. Find no of possible ways
+
+Shortcut to solve Recursion:
+.Try to represent the problem interms of index
+.Do all possible stuffs on index based on problem statement
+.If asked sum of all ways ---> count all ways
+.If asked min of all ways ---> find min in each way
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-3
+
+Recursion can be helpful in finding all possible ways
+
+For Memoization first we write code in Recursion and try to remove SubProblems repeatation
+For Tabulation we use Memoization and try to do in reverse that is Bottom Up as 2_FrogJump.py
+
+If we have pattren like i-1 and i-2 then space can be optimized further
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
