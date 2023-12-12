@@ -30,7 +30,7 @@ Which Graphs can be Bipartite?
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-21 Topological sort(DFS)
+L-21 Topological sort(DFS)(DAG)
 
 -> Topological sort can be applied on Directed Acyclic Graph(DAG)
 -> Topological sort : Linear ordering of vertices such that if there is a edge from u to v, u appears before v in that ordering
@@ -50,22 +50,22 @@ Why only DAG?
 -> In case of UnDirected graph there is no way we can say which one is ahead of other since both point eachother
 -> In case of Cyclic Graph also we can say which comes first
 
-L-22 Khan's Algorithm(Topological sort using BFS)
+L-22 Khan's Algorithm(Topological sort using BFS)(DAG)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-27 Shortest Path in Directed Acyclic Graph - Topological sort
+L-27 Shortest Path in Directed Acyclic Graph - Topological sort(DAG)
 
 S-1 : Do a Topological Sort on Graph
 S-2 : Take the nodes out of stack and relax the edges
 
-L-32 Dijkstra's Algorithm
+L-32 Dijkstra's Algorithm(UG and DG)
 
 -> Applicable to Undirected Graph/ Directed Graph but fails if it has negative path weight
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-41 Bellman Ford Algorithm
+L-41 Bellman Ford Algorithm(DG)
 
 -> Applicable for Directed Graph only and it overcomes the cons of Dijkstra's Algorithm like Graph with negative path weight
 -> Edges can be in any order
@@ -84,7 +84,7 @@ What if there is negative cycle?
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-42 Floyd Warshall Algorithm
+L-42 Floyd Warshall Algorithm(UG and DG)
 
 -> It can find Shortest Path for multiple sources, so it is called MultiSource Shortest Path Algorithm
 -> For both DG and UG
@@ -94,7 +94,7 @@ L-42 Floyd Warshall Algorithm
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-44 Minimum Spanning Tree
+L-44 Minimum Spanning Tree(UG)
 
 -> Spanning Tree: A tree containing N nodes and N-1 edges and all nodes are reachable from one another then it is called Spanning Tree
 -> The Spanning Tree with Minimum sum of edge weight is called Minimum Spanning Tree
@@ -102,16 +102,16 @@ L-44 Minimum Spanning Tree
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-45 Prims Algorithm
+L-45 Prims Algorithm(UG)
 
 -> Used in Find Minimum Spanning Tree
 -> Used Prioroty Queue
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-L-46 Disjoint Sets (Most Imp)
+L-46 Disjoint Sets (Most Imp)(UG)
 
--> Used to find whether U and V are connected in constant time
+-> Used to find whether U and V are connected in constant time(4-alpha)
 -> Used for Dynamic Graphs
 -> Union does form a connection between U and V it can be done using -Union by Rank and -Union by Size
 
@@ -120,3 +120,40 @@ Union by Rank:
 S-1 : Find ultimate Parent of U and V i.e pu and pv
 S-2 : Find rank of pu and pv
 S-3 : Connect smaller rank to larger rank always
+
+Union by Size:
+
+S-1 : Find ultimate Parent of U and V i.e pu and pv
+S-2 : Find size of pu and pv
+S-3 : Connect smaller size to larger size always
+S-4 : If both are of same size connect to anyone of your choice and increase the size to which attached and change ultimate parent
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-47 Kruskals Algorithm(UG)
+
+-> Used for find Minimum Spanning Tree
+-> Using Disjoint Sets
+-> Sort all edges based on edge weight and make a connection if not already connected else pass and ultimately you will end up forming a MST
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-54 Kosaraju's Algorithm(DG)
+
+-> Used for finding Strongly Connected Components(SCC)
+-> SCC : With in the SCC every node is reachable from one node to other
+
+S-1 : Sort all edges according to finishing time i.e Do DFS and place everything in stack when backtracking so that you store which every ends first into stack first
+S-2 : Reverse the graph edges
+S-3 : Do a DFS and count number of DFS
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L-55 Bridges in Graph i.e Tarzan's Algorithm(UG)
+
+-> Used for finding bridges in a graph
+-> Bridge : An edge when it is removed causes a seperation of 2 or more components
+-> For UG
+
+-> Articulation Point : A vertex when removed causes a seperation of 2 or more components
+-------------------------------------------------------------------------------------------------------------------------------------------------------

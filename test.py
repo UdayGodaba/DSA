@@ -1,55 +1,32 @@
-n = int(input("Enter target: "))
-m = int(input("No of primes you can use from starting: "))
+n = 3
+m = 4
+queries = [[0, 1], [1, 2], [1, 1], [0, 2], [1, 3]]
+def numberOfIslandII(n, m, queries):
+    # Write your code here.
+    count = 0
+    mat = [[0 for _ in range(m)] for _ in range(n)]
+    path = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+    res = []
 
-a = []
-i = 2
+    for row, col in queries:
+        if mat[row][col] == 0:
+            mat[row][col] = 1
+            temp = 0
+            for r, c in path:
+                nRow = row + r
+                nCol = col + c
+                if 0 <= nRow < n and 0 <= nCol < m and mat[nRow][nCol]:
+                    temp += 1
+            if temp:
+                if count - (temp - 1) > 1:
+                    count -= (temp - 1)
+                else:
+                    count = 1
+            else:
+                count += 1
+            res.append(count)
 
-def isPrime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
+    return res
 
-while len(a) < m:
-    if isPrime(i):
-        a.append(i)
-    i += 1
-
-# dp = [[None for _ in range(n + 1)] for _ in range(m + 1)]
-
-# def f(idx, target):
-#     if target == 0:
-#         return 0
-#     if idx == m:
-#         return 1e9
-    
-#     if dp[idx][target] != None:
-#         return dp[idx][target]
-    
-#     take = 1e9
-#     if target >= a[idx]:
-#         take = f(idx, target - a[idx]) + 1
-#     notTake = f(idx + 1, target)
-
-#     dp[idx][target] = min(take, notTake)
-#     return dp[idx][target]
-# print(f(0, n))
-
-dp = [[None for _ in range(n + 1)] for _ in range(m + 1)]
-
-for idx in range(m + 1):
-    dp[idx][0] = 0
-for target in range(1, n + 1):
-    dp[m][target] = 1e9
-
-for idx in range(m - 1, -1 , -1):
-    for target in range(n + 1):
-        take = 1e9
-        if target >= a[idx]:
-            take = dp[idx][target - a[idx]] + 1
-        notTake = dp[idx + 1][target]
-        dp[idx][target] = min(take, notTake)
-
-print(dp[0][n])
+x = numberOfIslandII(n, m, queries)
+print(x)
